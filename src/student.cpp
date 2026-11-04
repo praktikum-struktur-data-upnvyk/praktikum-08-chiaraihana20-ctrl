@@ -123,12 +123,15 @@ bool insert(Node*& root, int nilai) {
 // =============================================================================
 
 const Node* cari(const Node* root, int nilai) {
-    if(root == nullptr || nilai == root->data){
+    if (root == nullptr || nilai == root->data) {
         return root;
-        if(nilai < root->data){
-           return cari(root->left, nilai);
-        }
-        return cari(root->right, nilai);
+    }
+
+    if (nilai < root->data) {
+        return cari(root->left, nilai);
+    }
+
+    return cari(root->right, nilai);
 }
 
 // =============================================================================
@@ -250,7 +253,7 @@ bool hapus(Node*& root, int nilai) {
         return hapus(root->right, succesor->data);
     }
     }
-}
+
 
 // =============================================================================
 // SOAL 3 — termahalTerbeli                                              25 poin
@@ -292,14 +295,16 @@ bool hapus(Node*& root, int nilai) {
 const Node* termahalTerbeli(const Node* root, int uang) {
     const Node* terbaik = nullptr;
     const Node* current = root;
+
     while (current != nullptr) {
-        if (curr->data <= uang) {
-            terbaik = current;     
-            current= current->right;     
+        if (current->data <= uang) {
+            terbaik = current;
+            current = current->right;
         } else {
-            current = current->left; 
+            current = current->left;
         }
     }
+
     return terbaik;
 }
 
